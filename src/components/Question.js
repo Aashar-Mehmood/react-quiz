@@ -3,7 +3,12 @@ export default function Question(props) {
   const { question, options, handleClick, answersChecked } = props;
   return (
     <div className="question">
-      <h2>{question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}</h2>
+      <h2>
+        {question
+          .replace(/&quot;/g, '"')
+          .replace(/&#039;/g, "'")
+          .replace(/&amp;/g, "&")}
+      </h2>
 
       <div className="options">
         {options.map((option) => {
@@ -17,6 +22,8 @@ export default function Question(props) {
             }
           } else if (!option.isSelected && answersChecked && option.isCorrect) {
             classNames += "correct ";
+          } else {
+            classNames += "";
           }
           return (
             <button
@@ -25,7 +32,10 @@ export default function Question(props) {
               key={nanoid(10)}
               onClick={handleClick}
             >
-              {option.value.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}
+              {option.value
+                .replace(/&quot;/g, '"')
+                .replace(/&#039;/g, "'")
+                .replace(/&amp;/g, "&")}
             </button>
           );
         })}

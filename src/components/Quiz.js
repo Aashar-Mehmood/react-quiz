@@ -115,15 +115,15 @@ export default function Quiz() {
         )}
         <button
           onClick={() => {
-            if (allSelected && !answersAreChecked) {
-              checkAnswers();
-            } else if (allSelected && answersAreChecked) {
+            if (answersAreChecked) {
               resetQuiz();
+            } else if (!answersAreChecked && allSelected) {
+              checkAnswers();
             }
           }}
           className="btn primary"
         >
-          {allSelected && answersAreChecked ? "Play Again" : "Check Answers"}
+          {answersAreChecked ? "Play Again" : "Check Answers"}
         </button>
       </div>
     </div>
