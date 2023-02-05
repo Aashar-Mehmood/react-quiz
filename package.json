@@ -1,8 +1,8 @@
 {
   "name": "react-quiz",
   "version": "0.1.0",
-  "private": true,
-  "home": "http://aashar-mehmood.github.io/react-quiz/",
+  "private": false,
+  "home": "https://aashar-mehmood.github.io/react-quiz/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
