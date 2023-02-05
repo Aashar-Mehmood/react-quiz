@@ -1,5 +1,5 @@
 
-https://aashar-mehmood.github.io/react-quiz/
+https://react-quiz-scrimba.netlify.app/
 
 Quiz app based on a challenge given in the react course by Free Code Camp.
 
