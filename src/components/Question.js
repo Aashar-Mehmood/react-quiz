@@ -9,7 +9,8 @@ export default function Question(props) {
           .replace(/&#039;/g, "'")
           .replace(/&amp;/g, "&")}
       </h2>
-
+    
+    
       <div className="options">
         {options.map((option) => {
           var classNames = "btn ";

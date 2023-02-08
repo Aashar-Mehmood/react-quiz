@@ -2,8 +2,8 @@ import Question from "./Question";
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 
-export default function Quiz() {
-  const [restartQuiz, setRestartQuiz] = useState(false);
+export default function Quiz(props) {
+  const {amount, category, difficulty, restartQuizHandler} = props;
   const [questions, setQuestions] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
   const [totalCorrect, setTotalCorrect] = useState(0);
@@ -33,7 +33,15 @@ export default function Quiz() {
   }
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
+    let url = `https://opentdb.com/api.php?amount=${amount}`;
+    if(category!=="any"){
+      url +=`&category=${category}`
+    }
+    if(difficulty!=="any"){
+      url +=`&difficulty=${difficulty}`
+    }
+    url += "&type=multiple";
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setQuestions(
@@ -49,7 +57,7 @@ export default function Quiz() {
           })
         );
       });
-  }, [restartQuiz]);
+  }, []);
 
   useEffect(() => {
     setAllSelected(() => {
@@ -71,7 +79,7 @@ export default function Quiz() {
   }
 
   function resetQuiz() {
-    setRestartQuiz((prev) => !prev);
+    restartQuizHandler();
     setAllSelected(false);
     setTotalCorrect(0);
     setAnswersAreChecked(false);
